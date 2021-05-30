@@ -1,7 +1,8 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.*
 
-val kotlinVersion = "1.5.10"
-val spekVersion = "2.0.15"
+val kotlinVersion: String by project
+val spekVersion: String by project
+val exposedVersion: String by project
 
 plugins {
     kotlin("jvm") version "1.5.10"
@@ -26,6 +27,11 @@ dependencies {
 
     implementation("com.discord4j:discord4j-core:3.1.5")
     implementation("org.slf4j:slf4j-simple:1.7.30")
+    compileOnly("com.h2database:h2:1.4.200")
+
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
 }
 
 tasks.withType<KotlinCompile> {
